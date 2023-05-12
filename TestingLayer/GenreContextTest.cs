@@ -14,19 +14,23 @@ namespace TestingLayer
 	{
 		private GenreContext context = new(SetupFixture.dbContext);
 		private Genre genre;
-		private Game game;
-		private User user;
+		private Game game1, game2;
+		private User user1, user2;
 
 		[SetUp]
 		public void Setup()
 		{
 			genre = new("Puzzle");
 
-			user = new("Mariela", "Antonova", "SurnaRf", 17, "AReallyCoolPassword", "antonovamemi22@gmail.com");
-			game = new("My Little Pony Magical Princess");
+			user1 = new("Mariela", "Antonova", "SurnaRf", 17, "AReallyCoolPassword", "antonovamemi22@gmail.com");
+			user2 = new("Maria", "Petrova", "mariika62", 17, "AReallyCoolPassword2", "mariapetrova_zh19@schoolmath.eu");
+			game1 = new("My Little Pony Magical Princess");
+			game2 = new("Minecraft");
 
-			genre.Users.Add(user);
-			genre.Games.Add(game);
+			genre.Users.Add(user1);
+			genre.Users.Add(user2);
+			genre.Games.Add(game1);
+			genre.Games.Add(game2);
 
 			context.Create(genre);
 		}
@@ -67,11 +71,13 @@ namespace TestingLayer
 		[Test]
 		public void ReadWithNavigationalProperties()
 		{
-			Genre readCupboard = context.Read(genre.Id, true);
+			Genre readGenre = context.Read(genre.Id, true);
 
-			Assert.That(readCupboard.Users.Contains(user)
-				&& readCupboard.Games.Contains(game),
-				"User and game are not in the Users and Games lists!");
+			Assert.That(readGenre.Users.Contains(user1)
+				&& readGenre.Users.Contains(user2)
+				&& readGenre.Games.Contains(game1)
+				&& readGenre.Games.Contains(game2),
+				"User1 and user2 and game1 and game2 are not in the Users and Games lists!");
 		}
 
 		[Test]

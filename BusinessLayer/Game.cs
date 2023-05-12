@@ -9,6 +9,7 @@ namespace BusinessLayer
 {
 	public class Game
 	{
+        [Key]
 		public int Id { get; set; }
 
         [Required]

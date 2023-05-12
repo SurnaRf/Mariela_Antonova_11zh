@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace BusinessLayer
 {
 	public class Genre
-	{      
+	{
+		[Key]
 		public int Id { get; set; }
 
 		[Required]
