@@ -160,6 +160,7 @@ namespace DataLayer
 					item.Friends = friends;
 					item.Games = games;
 				}
+				dbContext.SaveChanges();
 			}
 			catch (Exception)
 			{
@@ -178,6 +179,10 @@ namespace DataLayer
 				{
 					dbContext.Users.Remove(user);
 					dbContext.SaveChanges();
+				}
+				else
+				{
+					throw new InvalidOperationException("A user with that key does not exist!");
 				}
 			}
 			catch (Exception)

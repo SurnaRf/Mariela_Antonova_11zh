@@ -156,6 +156,7 @@ namespace DataLayer
 					genre.Users = users;
 					genre.Games = games;
 				}
+				dbContext.SaveChanges();
 			}
 			catch (Exception)
 			{
@@ -174,6 +175,10 @@ namespace DataLayer
 				{
 					dbContext.Genres.Remove(genre);
 					dbContext.SaveChanges();
+				}
+				else
+				{
+					throw new InvalidOperationException("A genre with that key does not exist!");
 				}
 			}
 			catch (Exception)
