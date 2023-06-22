@@ -157,8 +157,8 @@ namespace DataLayer
 							games.Add(game);
 						}
 					}
-					item.Friends = friends;
-					item.Games = games;
+					user.Friends = friends;
+					user.Games = games;
 				}
 				dbContext.SaveChanges();
 			}

@@ -150,8 +150,8 @@ namespace DataLayer
 							genres.Add(genre);
 						}
 					}
-					item.Genres = genres;
-					item.Users = users;
+					game.Genres = genres;
+					game.Users = users;
 				}
 				dbContext.SaveChanges();
 			}
